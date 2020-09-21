@@ -1,3 +1,4 @@
+require 'dotenv/load'
 require 'sinatra/base'
 require './config/mongoid'
 require './app/models/counter'
