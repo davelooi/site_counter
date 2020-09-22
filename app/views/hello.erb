@@ -1,0 +1,21 @@
+<html>
+
+<head>
+  <title>HELLO</title>
+</head>
+
+<body>
+  <p id="counter"></p>
+</body>
+
+<script>
+  fetch('/counter/qwerty')
+    .then(res => res.text())
+    .then(text => {
+      console.log(text)
+      element = document.getElementById('counter')
+      element.innerHTML = text
+    })
+</script>
+
+</html>

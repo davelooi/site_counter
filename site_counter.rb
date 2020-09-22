@@ -4,8 +4,10 @@ require './config/mongoid'
 require './app/models/counter'
 
 class SiteCounter < Sinatra::Base
+  set :views, settings.root + '/app/views'
+
   get '/' do
-    'Hello world!'
+    erb :hello
   end
 
   get '/counter/:key' do
