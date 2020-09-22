@@ -11,6 +11,10 @@ class SiteCounter < Sinatra::Base
   end
 
   get '/counter/:key' do
+    headers(
+      'Access-Control-Allow-Origin' => '*',
+      'Access-Control-Allow-Methods' => ['GET']
+    )
     counter = Counter.find_or_create_by(key: params[:key])
     counter.increment!
     counter.counter.to_s
