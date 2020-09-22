@@ -1,12 +1,18 @@
 require 'dotenv/load'
 require 'sinatra/base'
-require "sinatra/cors"
+require 'sinatra/cross_origin'
 require './config/mongoid'
 require './app/models/counter'
 
 class SiteCounter < Sinatra::Base
-  register Sinatra::Cors
-  set :allow_origin, "*"
+  configure do
+    enable :cross_origin
+  end
+
+  before do
+    response.headers['Access-Control-Allow-Origin'] = '*'
+  end
+
   set :views, settings.root + '/app/views'
 
   get '/' do
